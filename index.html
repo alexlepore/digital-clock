@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Time Exercise</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <p>Current time exercise vanilla-js</p>
+        </div>
+        <div class="row">
+            <div class ="col-12">
+                <div class="box" style="background-color: black; width: 600px; height: 275px; margin-top: 40px;border-top-left-radius: 80px;
+                border-top-right-radius: 80px;border-bottom-left-radius: 50px;border-bottom-right-radius: 50px; border-bottom: 15px solid rgb(109, 105, 105);">
+                    <p id="theDay" style="color: #6fff56; font-size: 30px; font-style: italic; margin-left: 65px; margin-top:10px;"></p>
+                    <p id="theTime" style="color: #6fff56; font-size: 90px; font-style: oblique; margin-left: 30px; margin-top: -20px; font-weight: bolder;"></p>
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="mx-auto" style="height:40px;width:40px;background-color: rgb(153, 149, 149);border-radius: 50%"></div>
+                        </div>
+                        <div class="col-3">
+                            <div class="mx-auto" style="height:40px;width:40px;background-color: rgb(153, 149, 149);border-radius: 50%"></div>
+                        </div>
+                        <div class="col-3">
+                            <div class="mx-auto" style="height:40px;width:40px;background-color: rgb(153, 149, 149);border-radius: 50%"></div>
+                        </div>
+                        <div class="col-3">
+                            <p id="theYear" style="color: #6fff56; font-size: 30px; font-style: italic; margin-right: 50px;"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    //global date object
+    var date = new Date();
+
+    /* prepends current day to the theDay id after parsing js date number to day*/
+    function displayDay(){
+        var displayTime = document.getElementById("theDay");
+
+        var weekday = new Array(7);
+        weekday[0] =  "Sunday";
+        weekday[1] = "Monday";
+        weekday[2] = "Tuesday";
+        weekday[3] = "Wednesday";
+        weekday[4] = "Thursday";
+        weekday[5] = "Friday";
+        weekday[6] = "Saturday";
+
+        var n = weekday[date.getDay()];
+        displayTime.innerHTML = n;
+    }
+
+    /* parse military js time to 12 hour interval with AM : PM.
+    set hour:minute:second:AM/PM format*/
+
+    function displayTime(){
+        var thisDate = new Date();
+        var dateHours = thisDate.getHours();
+        var actualTime = document.getElementById("theTime");
+        var convertMilitary = thisDate.getHours() >= 12 ? "PM" : "AM";
+        var convert24Hour = dateHours > 12 ? dateHours - 12 : dateHours; 
+        var currentTime = actualTime.innerHTML = convert24Hour + ": " + thisDate.getMinutes() + ": " + thisDate.getSeconds() + " " + convertMilitary;
+        setInterval(displayTime, 1000);
+    }
+
+    function displayYear(){
+        var year = document.getElementById("theYear");
+        var actualYear = year.innerHTML = date.getFullYear();
+    }
+    //run 
+    displayDay();
+    displayTime();
+    displayYear();
+
+    </script>
+  </body>
+</html>
