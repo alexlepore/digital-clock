@@ -40,7 +40,7 @@
     //global date object
     var date = new Date();
 
-    /* prepends current day to the theDay id after parsing js date number to day*/
+    /* appends current day to the theDay id after parsing js date number to day*/
     function displayDay(){
         var displayTime = document.getElementById("theDay");
 
@@ -53,8 +53,8 @@
         weekday[5] = "Friday";
         weekday[6] = "Saturday";
 
-        var n = weekday[date.getDay()];
-        displayTime.innerHTML = n;
+        var indexWeek = weekday[date.getDay()];
+        displayTime.innerHTML = indexWeek;
     }
 
     /* parse military js time to 12 hour interval with AM : PM.
