@@ -1,3 +1,3 @@
-# lil-clock
+# clock
 
 # https://floating-forest-88889.herokuapp.com/
